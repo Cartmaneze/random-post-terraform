@@ -16,34 +16,45 @@ resource "aws_ecr_repository" "postcard" {
   name = "random-postcard-ecr-repository"
 }
 
-resource "aws_security_group" "ssh" {
+resource "aws_security_group" "random_post_card_http_security_group" {
   ingress {
-    cidr_blocks = [
-      "0.0.0.0/0"
-    ]
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-  }
-}
-
-resource "aws_security_group" "http" {
-  ingress {
-    cidr_blocks = [
-      "0.0.0.0/0"
-    ]
     from_port = 80
     to_port = 80
     protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "random_post_card_ssh_security_group" {
+
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = -1
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
 resource "aws_instance" "web" {
-  ami           = "ami-05f7491af5eef733a"
+  ami           = "ami-03d88eb7436f92fdd"
   instance_type = "t3.micro"
 
-  security_groups = [
-    aws_security_group.ssh.id,
-    aws_security_group.http.id
+  vpc_security_group_ids  = [
+    aws_security_group.random_post_card_http_security_group.id,
+    aws_security_group.random_post_card_ssh_security_group.id
   ]
 }

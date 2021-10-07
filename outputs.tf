@@ -40,3 +40,11 @@ output "ec2_id" {
   value       = aws_instance.web.id
   description = "EC2 instance id"
 }
+
+output "http_sg_id" {
+  value       = aws_security_group.random_post_card_http_security_group.id
+}
+
+output "ssh_sg_id" {
+  value       = aws_security_group.random_post_card_ssh_security_group.id
+}

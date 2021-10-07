@@ -34,3 +34,9 @@ output "repository_url" {
   value       = aws_ecr_repository.postcard.repository_url
   description = "URL of the repository"
 }
+
+
+output "ec2_id" {
+  value       = aws_instance.web.id
+  description = "EC2 instance id"
+}

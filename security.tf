@@ -14,7 +14,8 @@ resource "aws_security_group" "random_post_card_http_security_group" {
   }
 
   tags = {
-    Name = "RandomPostcard"
+    Project   = "RandomPostcard"
+    Terraform = true
   }
 }
 
@@ -35,7 +36,8 @@ resource "aws_security_group" "random_post_card_ssh_security_group" {
   }
 
   tags = {
-    Name = "RandomPostcard"
+    Project   = "RandomPostcard"
+    Terraform = true
   }
 }
 
@@ -49,6 +51,7 @@ resource "aws_key_pair" "generated_key" {
   public_key = tls_private_key.pk.public_key_openssh
 
   tags = {
-    Name = "RandomPostcard"
+    Project   = "RandomPostcard"
+    Terraform = true
   }
 }

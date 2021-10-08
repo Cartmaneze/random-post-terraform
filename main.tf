@@ -8,7 +8,8 @@ resource "aws_s3_bucket" "postcard" {
   bucket = "random-postcard-bucket"
   acl    = var.acl
   tags   = {
-    Name = "RandomPostcard"
+    Project   = "RandomPostcard"
+    Terraform = true
   }
 }
 
@@ -27,6 +28,7 @@ resource "aws_instance" "web" {
   ]
 
   tags = {
-    Name = "RandomPostcard"
+    Project   = "RandomPostcard"
+    Terraform = true
   }
 }

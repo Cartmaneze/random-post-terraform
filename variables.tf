@@ -6,7 +6,11 @@ variable "aws_secret_key" {
   type        = string
   sensitive   = true
 }
-variable "random-postcard-ssh-key" {
+variable "ssh_key_name" {
+  type        = string
+  sensitive   = true
+}
+variable "ssh_public_key" {
   type        = string
   sensitive   = true
 }

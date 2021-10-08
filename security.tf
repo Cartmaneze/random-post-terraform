@@ -41,17 +41,7 @@ resource "aws_security_group" "random_post_card_ssh_security_group" {
   }
 }
 
-resource "tls_private_key" "pk" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
 resource "aws_key_pair" "generated_key" {
-  key_name   = var.random-postcard-ssh-key
-  public_key = tls_private_key.pk.public_key_openssh
-
-  tags = {
-    Project   = "RandomPostcard"
-    Terraform = true
-  }
+  key_name   = var.ssh_key_name
+  public_key = var.ssh_public_key
 }

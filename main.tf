@@ -20,7 +20,7 @@ resource "aws_ecr_repository" "postcard" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  key_name      = aws_key_pair.generated_key.key_name
+  key_name      = var.ssh_key_name
 
   vpc_security_group_ids = [
     aws_security_group.random_post_card_http_security_group.id,

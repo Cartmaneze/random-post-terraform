@@ -40,8 +40,3 @@ resource "aws_security_group" "random_post_card_ssh_security_group" {
     Terraform = true
   }
 }
-
-resource "aws_key_pair" "generated_key" {
-  key_name   = var.ssh_key_name
-  public_key = var.ssh_public_key
-}

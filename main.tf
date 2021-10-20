@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "postcard" {
 }
 
 resource "aws_ecr_repository" "postcard" {
-  name = "random-postcard-ecr-repository"
+  name = var.ecr_repository_name
 }
 
 resource "aws_instance" "web" {
